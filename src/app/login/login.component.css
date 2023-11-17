@@ -1,0 +1,32 @@
+.container{
+  max-width: 60rem;
+}
+#d{
+    width: 560px;
+    margin-top: 95px;
+    margin-left: 33px;
+    margin-bottom: 60px;
+    background-color: green;
+    border-radius: 50px 50px 50px 50px;
+    text-align: center;
+    padding: 27px;
+  transition: .5 ease-in-out;
+    
+}
+
+#d:hover {
+  transform: scale(1.06);
+  box-shadow: 0 4px 8px 0;
+}
+
+  .create{
+    text-decoration: none;
+  }
+#image{
+    margin-top: 154px;
+    width: 472px;
+    margin-left: 0px;
+    height: 374px;
+   
+}
+

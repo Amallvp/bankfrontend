@@ -1,0 +1,24 @@
+
+#d{
+    width: 536px;
+    margin-top: 75px;
+    margin-left: 34px;
+    margin-bottom: 47px;
+    background-color: green;
+    border-radius: 50px 50px 50px 50px;
+    text-align: center;
+    padding: 14px;
+
+}
+
+
+  .create{
+    text-decoration: none;
+  }
+#image{
+    margin-top: 154px;
+    width: 472px;
+    margin-left: 0px;
+    height: 374px;
+
+}

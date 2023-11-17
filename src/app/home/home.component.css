@@ -1,0 +1,86 @@
+
+.container{
+    display: flex;
+}
+
+.dashboard{
+width:20%;
+margin-top: 20px;
+margin-bottom: 20px;
+margin-left:20px;
+
+}
+.para{
+    width: 70%;
+    height: 260px;
+    text-align: center; 
+    margin-left: 100px;
+    margin-top:100px;
+
+
+}
+.profile{
+    height: 80px;
+    text-align: center;
+    border: solid;
+    border-radius: 20px 2px 2px 2px;
+    margin-bottom: 5px;
+    background-color: rgb(112, 231, 112);
+    padding-top: 25px;
+   
+}
+.balance{
+    height: 80px;
+    text-align: center;
+    border: solid;
+    border-radius: 20px 2px 2px 2px;
+    margin-bottom: 5px;
+    background-color: rgb(112, 231, 112);
+    padding-top: 25px;
+    
+}
+.money{
+    height: 80px;
+    text-align: center;
+    border: solid;
+    border-radius: 20px 2px 2px 2px;
+    margin-bottom: 5px;
+    background-color: rgb(112, 231, 112);
+    padding-top: 25px;
+}
+.account{
+    height: 80px;
+    text-align: center;
+    border: solid;
+    border-radius: 20px 2px 2px 2px;
+    margin-bottom: 5px;
+    background-color: rgb(112, 231, 112);
+    padding-top: 25px;
+}
+.logout{
+    height: 80px;
+    text-align: center;
+    border: solid;
+    border-radius: 20px 2px 2px 2px;
+    background-color: rgb(112, 231, 112);
+    margin-bottom: 5px;
+    padding-top: 25px;
+}
+.delete{
+    height:80px;
+    text-align: center;
+    border: solid;
+    border-radius: 20px 2px 2px 2px;
+    background-color: rgb(112, 231, 112);
+    margin-bottom: 5px;
+    padding-top: 25px;
+}
+.logo{
+    height:80px;
+    text-align: center;
+    border: solid;
+    border-radius: 20px 2px 2px 2px;
+    background-color: rgb(112, 231, 112);
+    margin-bottom: 5px;
+    padding-top: 25px;
+}
