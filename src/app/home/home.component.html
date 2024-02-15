@@ -1,12 +1,12 @@
-<div class="container" style="background-color: rgb(135, 168, 135);">
+<div class="container-fluid" style="background-color: rgb(135, 168, 135);">
 
 <div class="dashboard">
-<div class="profile" data-bs-toggle="modal" data-bs-target="#exampleModalone">
+<div (click)="profileView()" class="profile" data-bs-toggle="modal" data-bs-target="#exampleModalone">
       <p>  View profile  <i class="fa-solid fa-user fa-beat"></i></p> 
     
         </div>
         
-    <div class="balance" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" >
+    <div (click)="Balanceview()" class="balance" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" >
        <p>Balance Enquiry <i class="fa-solid fa-money-check fa-beat"></i></p> 
     
     </div>
@@ -18,14 +18,14 @@
 
     </div>
     
-    <div class="account">
+    <div (click)="statement()" class="account">
 
         <p> Account Statement  
          <i class="fa-solid fa-file-invoice fa-beat"></i></p>
 
     </div>
     
-    <div class="logout">
+    <div (click)="logout()" class="logout">
 
         <p> logout 
          <i class="fa-solid fa-right-from-bracket fa-beat"></i></p>
@@ -33,12 +33,13 @@
     </div>
     
     
-    <div class="delete">
+    <div (click)="deleteAcc()" class="delete" >
 
         <p> Delete Account 
          <i class="fa-solid fa-user-slash fa-beat"></i></p>
 
     </div>
+
     <div class="logo">
         <p>
           <i class="fa-solid fa-hand-holding-dollar fa-beat"></i></p>
@@ -47,11 +48,13 @@
 </div>
 
 <div class="para">
-    <h1>Hi</h1>
-    <H3>Enjoy Net banking!!</H3>
-    <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut exercitationem excepturi expedita magni reiciendis 
+    <h1  [ngClass]="shareAcno?'c':''" >Welcome {{user}}</h1>
+    <H3  [ngClass]="shareAcno?'c':''" >Hi...Enjoy Net banking!!</H3>
+    <P  [ngClass]="shareAcno?'c':''" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut exercitationem excepturi expedita magni reiciendis 
         ipsam necessitatibus fugiat dolore laborum harum iusto,
          porro impedit tempore, accusamus id voluptatibus vel quam vero.</P>
+
+         <app-delete (ondelete)="deleteAccount($event)" (onCancel)="cancel()" [childAcno]="shareAcno"></app-delete>
 </div>
 </div>
 <!--  -->
@@ -69,8 +72,8 @@
             <img  class="image model"style="width:150px"
             src="https://i.postimg.cc/prt9L6WX/images.jpg"></div>
             <div class="p-3">
-            <h6>Account Name   : AMAL VP</h6>
-            <h6> Account Number : 47562133210006</h6>
+            <h6>Account Name    : {{profileData.uname}}</h6>
+            <h6> Account Number : {{profileData.acno}}</h6>
         </div>
         
         <div class="modal-footer" style="background-color: green;">
@@ -92,11 +95,11 @@
         src="https://i.postimg.cc/pLxR83pN/bb.jpg"></div>
       <div class="m-2">
 
-        <h5> Hi Username </h5>
+        <h5> Hi {{balanceData.uname}} </h5>
 
-        <h6 class="mt-3">Account Name   : AMAL VP</h6>
-        <h6 class="mt-3"> Account Number : 47562133210006</h6>
-        <h6 class="mt-3"> Account Balance : 40000.56</h6>
+        <h6 class="mt-3">Account Name   : {{balanceData.uname}}</h6>
+        <h6 class="mt-3"> Account Number : {{balanceData.acno}}</h6>
+        <h6 class="mt-3"> Account Balance :{{balanceData.balance}}</h6>
       </div>
       <div class="dropdown mt-3">
     
@@ -117,16 +120,29 @@
             <div>
                <img  class="w-100"
         src="https://i.postimg.cc/HkPPwP2W/transfer.png"></div>
-          <form class="mt-2">
+          <form [formGroup]="moneyTransferForm"  class="mt-2">
             
-            <input type="text" class="form-control mt-3" name="account" placeholder="Account number">
-            <input type="text" class="form-control mt-3"name="account" placeholder="Transfer Amount">
-            <input type="password"class="form-control mt-3" name="account" placeholder="Password">
-            <Button type="submit" class="btn btn-success mt-3" >Transfer</Button>
+            <input formControlName="toacno" type="text" class="form-control mt-3" name="account" placeholder="Recepient Account number">
+            <div *ngIf="moneyTransferForm.get('toacno')?.errors&&moneyTransferForm.get('toacno')?.touched">
+              <p class="text-danger mt-1">*Accept numbers only</p>
+          </div>
+            <input formControlName="amount" type="text" class="form-control mt-3"name="account" placeholder="Transfer Amount">
+            <div *ngIf="moneyTransferForm.get('amount')?.errors&&moneyTransferForm.get('amount')?.touched">
+              <p class="text-danger mt-1">*Accept numbers only</p>
+          </div>
+            <input formControlName="pswrd" type="password"class="form-control mt-3" name="account" placeholder="Password">
+            <div *ngIf="moneyTransferForm.get('pswrd')?.errors&&moneyTransferForm.get('pswrd')?.touched">
+              <p class="text-danger mt-1">*Accept letter&numbers only</p>
+          </div>
+            <Button (click)="Transfer()" type="submit" class="btn btn-success mt-3" >Transfer</Button>
           </form>
         </div>
         </div>
         <div class="modal-footer" style="background-color: green;">
+          <p [ngClass]="status ? 'success' : 'failure'" class="text-light mt-1" >
+            {{ message }}
+          
+          </p> 
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
     
         </div>

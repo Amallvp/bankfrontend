@@ -4,20 +4,32 @@
     
         <div class="col-6 mt-5">
     
-            <form id="d" class="cointainer-fluid text-center border">
+            <form [formGroup]="signUpModelForm" id="d" class="cointainer-fluid text-center border">
         <h2 style="color:aliceblue">Sign up</h2>
         
-        <input formControlName="acno" id="acnum" type="text" class="form-control mt-4" placeholder="Enter Account Number ">
+        <input formControlName="acno" id="a1" name="acno" type="text" class="form-control mt-4" placeholder="Enter Account Number ">
+<div *ngIf="signUpModelForm.get('acno')?.errors&&signUpModelForm.get('acno')?.touched">
+    <p class="text-danger mt-2">Accept numbers only</p>
+</div>
+        <input formControlName="uname" id="a2" name="uname" type="text" class="form-control mt-4" placeholder="Enter Username">
+    
+        <div *ngIf="signUpModelForm.get('uname')?.errors&&signUpModelForm.get('uname')?.touched">
+            <p class="text-danger mt-2">Accept letters only</p>
+        </div>
 
-        <input formControlName="usrnm" id="user" type="text" class="form-control mt-4" placeholder="Enter Username">
-    
-         <input formControlName="pswd" id="passwrd" type="password" class="form-control mt-4" placeholder="Enter password">
+         <input formControlName="pswrd" id="p1" name="pswrd" type="password" class="form-control mt-4" placeholder="Enter password">
 
-         <input formControlName="cpwrd" id="cnfrmpwrd" type="password" class="form-control mt-4" placeholder="Confirm password">
+         <div *ngIf="signUpModelForm.get('pswrd')?.errors&&signUpModelForm.get('pswrd')?.touched">
+            <p class="text-danger mt-2">Accept letter&numbers only</p>
+        </div>
+
+         <input formControlName="cpswrd" id="p2" name="cpswrd" type="password" class="form-control mt-4" placeholder="Confirm password">
     
-        <button  type="submit" class="btn btn-warning mt-4">Signup</button>
+         <div *ngIf="pswrdMatch" class="text-danger mt-2" >
+        <p>Password Doesn't match</p>
+    </div>
+        <button (click)="signup()" type="submit" class="btn btn-warning mt-4">Signup</button>
     
-    <p class="mt-3">Dont have account? <a href="" class="create">Create Account </a></p>
     </form>
     
         </div>

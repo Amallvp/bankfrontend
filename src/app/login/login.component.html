@@ -1,27 +1,35 @@
 <div class="">
 
-    <h3 class="container fs-3 mt-3 ms-3"> Hi , {{data}}
-    </h3>
+    <h3 class="container fs-3 mt-3 ms-3"></h3>
 
     
 <div class="text-center row">
 
     <div class="col-6 mt-5">
 
-        <form id="d" class="text-center border">
+        <form [formGroup]="loginForm" id="d" class="text-center border">
     <h2 style="color:aliceblue">Sign In</h2>
     
-    <input (change)="acnoChange($event)" name="accno" id="account" type="text" class="form-control mt-5" [placeholder]="pdate">
+    <input formControlName="acno" name="acno" id="q2" type="text" class="form-control mt-5" placeholder="Enter Account num">
 
-     <input (change)="pswrdChange($event)" formControlName="pswrd" id="pasword" type="password" class="form-control mt-5" placeholder="Enter password">
+    <div *ngIf="loginForm.get('acno')?.errors&&loginForm.get('acno')?.touched">
+        <p class="text-danger mt-2">Accept numbers only</p>
+    </div>
+
+     <input formControlName="pswrd"  name="pswrd" id="q3" type="password" class="form-control mt-5" placeholder="Enter password">
+
+
+     <div *ngIf="loginForm.get('pswrd')?.errors&&loginForm.get('pswrd')?.touched">
+        <p class="text-danger mt-2">Accept letter&numbers only</p>
+    </div>
 
     <button (click)="login()" type="submit" class="btn btn-warning mt-5">Login</button>
 
-<p class="mt-3">Dont have account? <a href="" class="create">Create Account </a></p>
+<p class="mt-2 p-2">Dont have account? <a href="register" class="create">Create Account </a></p>
 </form>
 
     </div>
-    <div class="img-fluid col-6" alt="...">
+    <div class="responsive col-6" alt=" ">
         <img  id="image" 
          src="https://i.postimg.cc/156mzSKX/bank2.png">
         </div>
